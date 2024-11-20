@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>Title</title>
+        <!-- Required meta tags -->
+        <meta charset="utf-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, shrink-to-fit=no"
+        />
+
+        <!-- Bootstrap CSS v5.2.1 -->
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+            crossorigin="anonymous"
+        />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.0/css/all.min.css" 
+        integrity="sha512-9xKTRVabjVeZmc+GUW8GgSmcREDunMM+Dt/GrzchfN8tkwHizc5RP4Ok/MXFFy5rIjJjzhndFScTceq5e6GvVQ==" 
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    </head>
+
+    <body>
+        <nav class="navbar navbar-dark bg-dark">
+            <div class="container-fluid">
+                <span class="navbar-brand mb-0 h1">
+                    <i class="fa-solid fa-list-check" style="color: #0f7b21;"></i>
+                    Student Manager
+                </span>
+            </div>
+        </nav>
+        <a href="{% url 'add' %}" class="btn btn-success ms-2 mt-2">Add Students +</a>
+        <table class="table table-dark table-bordered w-100 mt-3">
+            <thead>
+                <tr>
+                    <th>REG_NO</th>
+                    <th>NAME</th>
+                    <th>COURCE</th>
+                    <th>SUBJECT</th>
+                    <th>PHONE_NO</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in data %}
+                <tr>
+                    <td>{{i.roll_no}}</td>
+                    <td>{{i.name}}</td>
+                    <td>{{i.cource}}</td>
+                    <td>{{i.subject}}</td>
+                    <td>{{i.phone_no}}</td>
+                    <td>
+                        <a href="{% url 'edit' i.id %}" class="btn me-3">
+                            <i class="fa-solid fa-pen-to-square" style="color: #3ecc74;"></i>
+                        </a>
+                        <a href="{% url 'delete' i.id %}" class="btn">
+                            <i class="fa-solid fa-trash" style="color: #e1141e;"></i>
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+          
+    </body>
+</html>
